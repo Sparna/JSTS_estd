@@ -2,12 +2,12 @@ import { useState } from 'react';
 import Input from './components/Input'
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [cpf, setCpf] = useState("");
   const [password, setPassword] = useState("");
 
   function handleSubmit() {
     // Aqui você pode adicionar a lógica de autenticação, como enviar os dados para um servidor
-    console.log("E-mail:", email);
+    console.log("CPF:", cpf);
     console.log("Senha:", password);
   }
 
@@ -15,7 +15,7 @@ const Login = () => {
     <form className="bg-[#F8EBD3] h-screen flex justify-center items-center">
         <div className="w-[350px] gap-2 rounded-full flex flex-col justify-center items-center">
             <img src="./login-usuario.png" alt="Usuário" />
-            <Input type="email" placeholder="E-mail / CPF" onChange={(e) => setEmail(e.target.value)} />
+            <Input type="cpf" placeholder="CPF" onChange={(e) => setCpf(e.target.value)} />
             <Input type="password" placeholder="Senha" onChange={(e) => setPassword(e.target.value)} />
             <button type="button" className="self-end text-sm text-[#8A5B12] underline underline-offset-2 hover:text-black">
               Esqueci minha senha
