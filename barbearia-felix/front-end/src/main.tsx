@@ -3,11 +3,14 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { Header } from './components/Header.tsx'
+import { HeaderBase } from './components/HeaderBase.tsx'
+import Login from './Login.tsx'
 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Header />
-    <App />
+    <HeaderBase />
+    <Login />
+    {/*<App />*/}
   </StrictMode>,
 )
