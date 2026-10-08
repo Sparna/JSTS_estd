@@ -1,4 +1,4 @@
-import type { ChangeEventHandler, FormEventHandler, HTMLInputTypeAttribute } from 'react'
+import type { ChangeEventHandler, HTMLInputTypeAttribute } from 'react'
 
 type InputProps = {
   type?: HTMLInputTypeAttribute
@@ -36,7 +36,7 @@ const Input = ({ type = 'text', id, label, placeholder = 'E-mail / CPF', value, 
           event.currentTarget.setCustomValidity('');
           onChange?.(event);
         }}
-        className="bg-white w-[350px] h-[34px] placeholder:text-xs placeholder:text-[#999999] outline-none text-sm rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="bg-white w-full max-w-full h-[34px] placeholder:text-xs placeholder:text-[#999999] outline-none text-sm rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
     </div>
   );

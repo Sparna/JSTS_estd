@@ -11,7 +11,7 @@ import Cadastro from './Cadastro.tsx'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HeaderBase />
-    <Cadastro />
+    <Login />
     {/*<App />*/}
   </StrictMode>,
 )
