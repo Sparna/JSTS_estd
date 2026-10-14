@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import Input from './components/Input'
+import Input from '../components/Input'
 
 function isValidCpf(value: string) {
   const digits = value;
@@ -109,7 +109,7 @@ const Cadastro = () => {
   return (
     <form onSubmit={handleSubmit} className="bg-[#F8EBD3] h-screen flex justify-center items-center">
         <div className="w-[350px] gap-2 rounded-full flex flex-col justify-center items-center">
-            <img src="./login-usuario.png" alt="Usuário" />
+            <img src="/login-usuario.png" alt="Usuário" />
         <Input id="nome" label="Nome" type="text" placeholder="Nome" required onChange={(e) => handleFieldChange(setNome)(e.target.value)} />
         <Input id="email" label="E-mail" type="email" placeholder="E-mail" onChange={(e) => handleFieldChange(setEmail)(e.target.value)} />
         <Input id="cpf" label="CPF" type="text" placeholder="CPF" value={formatCpf(cpf)} required onChange={(e) => handleFieldChange(setCpf)(e.target.value.replace(/\D/g, '').slice(0, 11))} />

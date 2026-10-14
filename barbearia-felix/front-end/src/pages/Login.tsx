@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import Input from './components/Input'
+import Input from '../components/Input'
 
 function createCaptchaChallenge() {
   return {
@@ -68,7 +68,7 @@ const Login = () => {
   return (
     <main className="relative bg-[#F8EBD3] h-screen flex justify-center items-center">
       <form className="w-[350px] gap-2 flex flex-col justify-center items-center">
-        <img src="./login-usuario.png" alt="Usuário" />
+        <img src="/login-usuario.png" alt="Usuário" />
         <Input type="cpf" placeholder="CPF" onChange={(e) => setCpf(e.target.value)} />
         <Input type="password" placeholder="Senha" onChange={(e) => setPassword(e.target.value)} />
         <button type="button" onClick={handleSubmit} className="bg-[#D99A32] border border-[#999999] w-full h-[34px] font-bold text-sm rounded-md py-2 hover:bg-[#E0D1B9]">
