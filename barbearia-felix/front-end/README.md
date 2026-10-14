@@ -30,3 +30,29 @@ If you are developing a production application, we recommend enabling type-aware
 ```
 
 See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+
+## Dependências do projeto
+
+As dependências abaixo são declaradas no `package.json`. Execute os comandos na pasta `barbearia-felix\front-end`.
+
+### Dependências da aplicação
+
+```powershell
+npm install react@^19.2.8
+npm install react-dom@^19.2.8
+npm install react-router@^8.4.0
+```
+
+### Dependências de desenvolvimento
+
+```powershell
+npm install -D @tailwindcss/vite@^4.3.3
+npm install -D @types/node@^24.13.3
+npm install -D @types/react@^19.2.18
+npm install -D @types/react-dom@^19.2.7
+npm install -D @vitejs/plugin-react@^6.1.1
+npm install -D oxlint@^1.81.0
+npm install -D tailwindcss@^4.3.3
+npm install -D typescript@~6.0.2
+npm install -D vite@^8.3.0
+```
