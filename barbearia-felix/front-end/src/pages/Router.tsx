@@ -1,11 +1,33 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Outlet } from "react-router";
 import Login from "./Login";
 import Cadastro from "./Cadastro";
+import Home from "./Home";
+import { Header } from "../components/Header";
+import Pedidos from "./Pedidos";
+
+const Layout = () => {
+  return (
+    <div>
+      <Header />
+      <Outlet />
+    </div>
+  );
+}
+
 
 export const router = createBrowserRouter([
   {
-    path: "/",
-    element: <div> Olá </div>,
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/pedidos",
+        element: <Pedidos />,
+      },
+    ]
   },
   {
     path: "/login",

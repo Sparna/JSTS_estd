@@ -1,5 +1,7 @@
 import { useState, type FormEvent } from 'react';
-import Input from '../components/Input'
+import Button from '../components/Button';
+import Input from '../components/Input';
+import LogoPrincipal from '../components/LogoPrincipal';
 
 function createCaptchaChallenge() {
   return {
@@ -68,15 +70,12 @@ const Login = () => {
   return (
     <main className="relative bg-[#F8EBD3] h-screen flex justify-center items-center">
       <form className="w-[350px] gap-2 flex flex-col justify-center items-center">
-        <img src="/login-usuario.png" alt="Usuário" />
+        <LogoPrincipal />
         <Input type="cpf" placeholder="CPF" onChange={(e) => setCpf(e.target.value)} />
         <Input type="password" placeholder="Senha" onChange={(e) => setPassword(e.target.value)} />
-        <button type="button" onClick={handleSubmit} className="bg-[#D99A32] border border-[#999999] w-full h-[34px] font-bold text-sm rounded-md py-2 hover:bg-[#E0D1B9]">
-          Entrar
-        </button>
-        <button type="button" onClick={() => { setGuestError(""); setGuestModalOpen(true); }} className="bg-black text-[#D99A32] border border-black w-full h-[34px] font-bold text-sm rounded-md py-2 hover:bg-[#333333]">
-          Entrar sem conta
-        </button>
+        <Button title="Entrar" type="button" onClick={handleSubmit} className="w-full py-2" />
+        <Button title="Entrar sem conta" type="button" variant="negative" onClick={() => { setGuestError(""); setGuestModalOpen(true); }} className="w-full py-2" />
+        <Button title="Criar Conta" to="/cadastro" className="w-full py-2" />
       </form>
       {isGuestModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4" onClick={() => setGuestModalOpen(false)}>

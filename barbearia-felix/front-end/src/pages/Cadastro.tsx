@@ -1,39 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import Input from '../components/Input'
+import LogoPrincipal from '../components/LogoPrincipal';
 
-function isValidCpf(value: string) {
-  const digits = value;
-
-  if (digits.length !== 11 || /^(\d)\1{10}$/.test(digits)) {
-    return false;
-  }
-
-  const calculateDigit = (length: number) => {
-    const sum = digits
-      .slice(0, length)
-      .split('')
-      .reduce((total, digit, index) => total + Number(digit) * (length + 1 - index), 0);
-    const remainder = (sum * 10) % 11;
-    return remainder === 10 ? 0 : remainder;
-  };
-
-  return calculateDigit(9) === Number(digits[9]) && calculateDigit(10) === Number(digits[10]);
-}
-
-function formatCpf(value: string) {
-  const digits = value.slice(0, 11);
-  if (digits.length <= 3) {
-    return digits;
-  }
-  if (digits.length <= 6) {
-    return `${digits.slice(0, 3)}.${digits.slice(3)}`;
-  }
-  if (digits.length <= 9) {
-    return `${digits.slice(0, 3)}.${digits.slice(3, 6)}.${digits.slice(6)}`;
-  }
-
-  return `${digits.slice(0, 3)}.${digits.slice(3, 6)}.${digits.slice(6, 9)}-${digits.slice(9)}`;
-}
 
 function formatPhone(value: string) {
   const digits = value.slice(0, 11);
@@ -54,7 +22,6 @@ function formatPhone(value: string) {
 const Cadastro = () => {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
-  const [cpf, setCpf] = useState("");
   const [telefone, setTelefone] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setConfirmPassword] = useState("");
@@ -77,11 +44,6 @@ const Cadastro = () => {
 
     if (email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
       setValidationError("Informe um e-mail válido.");
-      return;
-    }
-
-    if (!isValidCpf(cpf)) {
-      setValidationError("Informe um CPF válido.");
       return;
     }
 
@@ -109,11 +71,10 @@ const Cadastro = () => {
   return (
     <form onSubmit={handleSubmit} className="bg-[#F8EBD3] h-screen flex justify-center items-center">
         <div className="w-[350px] gap-2 rounded-full flex flex-col justify-center items-center">
-            <img src="/login-usuario.png" alt="Usuário" />
+        <LogoPrincipal />
         <Input id="nome" label="Nome" type="text" placeholder="Nome" required onChange={(e) => handleFieldChange(setNome)(e.target.value)} />
         <Input id="email" label="E-mail" type="email" placeholder="E-mail" onChange={(e) => handleFieldChange(setEmail)(e.target.value)} />
-        <Input id="cpf" label="CPF" type="text" placeholder="CPF" value={formatCpf(cpf)} required onChange={(e) => handleFieldChange(setCpf)(e.target.value.replace(/\D/g, '').slice(0, 11))} />
-        <Input id="telefone" label="Telefone" type="tel" placeholder="Telefone" value={formatPhone(telefone)} required onChange={(e) => handleFieldChange(setTelefone)(e.target.value.replace(/\D/g, '').slice(0, 11))} />
+        <Input id="telefone" label="Telefone" type="tel" placeholder="(00)00000-0000" value={formatPhone(telefone)} required onChange={(e) => handleFieldChange(setTelefone)(e.target.value.replace(/\D/g, '').slice(0, 11))} />
         <Input id="senha" label="Senha" type="password" placeholder="Senha" required onChange={(e) => handleFieldChange(setPassword)(e.target.value)} />
         <Input id="confirmar-senha" label="Confirmar Senha" type="password" placeholder="Confirmar Senha" required onChange={(e) => handleFieldChange(setConfirmPassword)(e.target.value)} />
             {validationError && <p role="alert" className="text-sm text-red-700">{validationError}</p>}
